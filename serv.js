@@ -13,13 +13,8 @@ const awago = [
     {id: 4 ,ogi:"ddd"},
     {id: 5, ogi:"eee"}]
 
-app.listen(3000,()=>{
-    console.log("open");
-    console.log("aaaa")
-})
 
-app.post("/",(req,res)=>{
-    res.send(req.body)
+const readf = (req,res)=>{
     textcontent = fs.open("./ooo.txt","r",(err,fd)=>{
         if(err){
             console.log("err")
@@ -27,16 +22,16 @@ app.post("/",(req,res)=>{
         else{
             data = fs.readFile(fd,"utf8",(err,data)=>{
                 if (err) {console.log(err)} 
-                else {console.log(data)
-                }
-            })
-    }
+                else {console.log(data) ; res.send([data])}
+            })}})}
+
+app.listen(3000,()=>{
+    console.log("open");
+    console.log("aaaa")
 })
-    /*fs.write(fd, string, position, encoding, callback)*/
-})
 
 
-
+app.post("/",readf)
 
 app.get("/",(req,res)=>{
     res.send("ooooo")

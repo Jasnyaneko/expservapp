@@ -10,8 +10,6 @@ form.addEventListener("submit",(event)=>{
     /*console.log(formdat.get("ogridou"))*/
     recup(formobject)
 })
-const gib = ()=> {console.log(abo())}
-const abo = ()=> {console.log(gib())}
 async function recup (json){
     try{
         const resp = await fetch("http://localhost:3000/",{
@@ -26,7 +24,7 @@ async function recup (json){
         console.log(data)
     }
     catch{(e)=>console.error(e);
-        console.log("aabaa")
+        console.log("non")
     }
 }
 
