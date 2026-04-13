@@ -15,7 +15,18 @@ const awago = [
 
 
 const readf = (req,res)=>{
-    textcontent = fs.open("./ooo.txt","r",(err,fd)=>{
+    fs.open("./ooo.txt","w",(err,fd)=>{
+        if(err){
+            console.log(err)
+        }
+        else{
+            fs.writeFile(fd,JSON.stringify(req.body),"utf8",(err,data)=>{
+            if(err){console.log(err)}
+            else{console.log(data)}
+            })
+        }
+    })
+    fs.open("./ooo.txt","r",(err,fd)=>{
         if(err){
             console.log("err")
         }
