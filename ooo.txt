@@ -1,1 +1,1 @@
-{"username":"aaaa","password":"bbbb"}
+{"username":"a@b.m","password":""}

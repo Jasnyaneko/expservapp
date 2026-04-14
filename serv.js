@@ -15,17 +15,21 @@ const awago = [
 
 
 const readf = (req,res)=>{
-    /*fs.open("./ooo.txt","w",(err,fd)=>{
+    if(req.body.newu){
+    let nuser = req.body
+    delete nuser["newu"]
+    fs.open("./ooo.txt","w",(err,fd)=>{
         if(err){
             console.log(err)
         }
         else{
-            fs.writeFile(fd,JSON.stringify(req.body),"utf8",(err,data)=>{
+            fs.writeFile(fd,JSON.stringify(nuser),"utf8",(err,data)=>{
             if(err){console.log(err)}
             else{console.log(data)}
             })
         }
-    })*/
+    })}
+    else{
     fs.open("./ooo.txt","r",(err,fd)=>{
         if(err){
             console.log("err")
@@ -34,7 +38,7 @@ const readf = (req,res)=>{
             data = fs.readFile(fd,"utf8",(err,data)=>{
                 if (err) {console.log(err)} 
                 else { if(JSON.stringify(req.body)==data){console.log("true") ; res.send(["mot de passe correcte"])}else{console.log("false") ; res.send(["mot de passe incorrect"])} ; console.log(data)}
-            })}})}
+            })}})}}
 
 app.listen(3000,()=>{
     console.log("open");
