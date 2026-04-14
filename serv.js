@@ -15,7 +15,7 @@ const awago = [
 
 
 const readf = (req,res)=>{
-    fs.open("./ooo.txt","w",(err,fd)=>{
+    /*fs.open("./ooo.txt","w",(err,fd)=>{
         if(err){
             console.log(err)
         }
@@ -25,7 +25,7 @@ const readf = (req,res)=>{
             else{console.log(data)}
             })
         }
-    })
+    })*/
     fs.open("./ooo.txt","r",(err,fd)=>{
         if(err){
             console.log("err")
@@ -33,7 +33,7 @@ const readf = (req,res)=>{
         else{
             data = fs.readFile(fd,"utf8",(err,data)=>{
                 if (err) {console.log(err)} 
-                else {console.log(data) ; res.send([data])}
+                else { if(JSON.stringify(req.body)==data){console.log("true")}else{console.log("false")} ; console.log(data) ; res.send([data])}
             })}})}
 
 app.listen(3000,()=>{
