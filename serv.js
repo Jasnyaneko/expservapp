@@ -17,8 +17,15 @@ const awago = [
 const readf = (req,res)=>{
     if(req.body.newu){
     let nuser = req.body
+    fs.readFile("./ooo.txt","utf8",(err,data)=>{
+        if(err){console.log(err)}
+        else{console.log(data)}
+    })
     delete nuser["newu"]
     fs.open("./ooo.txt","w",(err,fd)=>{
+        /* a corriger texte pas ecrit probablement entete de lecture w responsable faire test ATTENTION
+        REGARDE MOI LIS MOI STP OH OH OH AH AH AH AH
+         */
         if(err){
             console.log(err)
         }
