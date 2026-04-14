@@ -44,16 +44,20 @@ const readf = (req,res)=>{
         else{
             data = fs.readFile(fd,"utf8",(err,data)=>{
                 if (err) {console.log(err)} 
-                else { if(JSON.stringify(req.body)==data){console.log("true") ; res.send(["mot de passe correcte"])}else{console.log("false") ; res.send(["mot de passe incorrect"])} ; console.log(data)}
+                else { if(JSON.stringify(req.body)==data){console.log("true") ; res.send(["mot de passe correcte"])}
+                else{console.log("false") ; res.send(["mot de passe incorrect"])} ; console.log(data)}
             })}})}}
 
 app.listen(3000,()=>{
     console.log("open");
-    console.log("aaaa")
+    console.log("aaaa");
 })
 
-
 app.post("/",readf)
+
+app.get("/ip",(req,res)=>{
+    res.send(req.ip)
+})
 
 app.get("/",(req,res)=>{
     res.send("ooooo")
