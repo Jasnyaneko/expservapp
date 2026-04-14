@@ -17,25 +17,25 @@ const awago = [
 const readf = (req,res)=>{
     if(req.body.newu){
     let nuser = req.body
-    fs.readFile("./ooo.txt","utf8",(err,data)=>{
+    fs.open("./ooo.txt","r",(err,fd)=>{
         if(err){console.log(err)}
-        else{console.log(data)}
-    })
-    delete nuser["newu"]
-    fs.open("./ooo.txt","w",(err,fd)=>{
-        /* a corriger texte pas ecrit probablement entete de lecture w responsable faire test ATTENTION
-        REGARDE MOI LIS MOI STP OH OH OH AH AH AH AH
-         */
-        if(err){
-            console.log(err)
-        }
-        else{
-            fs.writeFile(fd,JSON.stringify(nuser),"utf8",(err,data)=>{
+        else{fs.readFile(fd,"utf8",(err,data)=>{
             if(err){console.log(err)}
             else{console.log(data)}
-            })
-        }
+        })}
+    })
+    fs.readFile("./ooo.txt","utf8",(err,data)=>{
+        if(err){console.log(err)}
+        else{if(data != JSON.stringify(nuser)){fs.open("./ooo.txt","w",(err,fd)=>{
+        if(err){console.log(err)}
+        else{fs.writeFile(fd,JSON.stringify(nuser),"utf8",(err,data)=>{
+            if(err){console.log(err)}
+            else{console.log(data)}
+            })}
     })}
+    else{res.send(["already exists"])}
+}})
+    delete nuser["newu"]}
     else{
     fs.open("./ooo.txt","r",(err,fd)=>{
         if(err){
