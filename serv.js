@@ -33,7 +33,7 @@ const readf = (req,res)=>{
         else{
             data = fs.readFile(fd,"utf8",(err,data)=>{
                 if (err) {console.log(err)} 
-                else { if(JSON.stringify(req.body)==data){console.log("true")}else{console.log("false")} ; console.log(data) ; res.send([data])}
+                else { if(JSON.stringify(req.body)==data){console.log("true") ; res.send(["mot de passe correcte"])}else{console.log("false") ; res.send(["mot de passe incorrect"])} ; console.log(data)}
             })}})}
 
 app.listen(3000,()=>{
