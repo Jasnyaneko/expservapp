@@ -9,7 +9,7 @@ mail.addEventListener("input",(event)=>{
     console.log(username.length)
     console.log(username.lastIndexOf(".")
     )
-    if( username.lastIndexOf(".") > username.lastIndexOf("@") + 1 && username.lastIndexOf(".") != username.length - 2 && username.lastIndexOf("@") != 0){
+    if( username.lastIndexOf(".") > username.lastIndexOf("@") + 1 && username.lastIndexOf(".") < username.length - 2 && username.lastIndexOf("@") != 0){
         mail.style.color= "green" ;  validemail = true }
     else{mail.style.color = "red" ; validemail = false}
 })

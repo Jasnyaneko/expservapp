@@ -4,6 +4,7 @@ const fs = require("fs")
 const cors = require("cors")
 app.use(express.json())
 
+
 app.use(cors(origin="null"))
 
 const awago = [
