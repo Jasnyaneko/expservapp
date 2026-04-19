@@ -15,14 +15,16 @@ const awago = [
     {id: 5, ogi:"eee"}]
 
 
-const readf = (req,res)=>{
+const readf = (req,res) =>
+{
     if(req.body.newu){
     let nuser = req.body
     fs.open("./ooo.txt","r",(err,fd)=>{
         if(err){console.log(err)}
-        else{fs.readFile(fd,"utf8",(err,data)=>{
-            if(err){console.log(err)}
-            else{console.log(data)}
+        else{
+            fs.readFile(fd,"utf8",(err,data)=>{
+                if(err){console.log(err)}
+                else{console.log(data)}
         })}
     })
     fs.readFile("./ooo.txt","utf8",(err,data)=>{
